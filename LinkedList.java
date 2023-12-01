@@ -1,37 +1,34 @@
 public class LinkedList {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         LLImplementation LL = new LLImplementation();
         LL.addNode(56);
         LL.addNode(70);
 
         // Use Case4
-        LL.InsertNodeAfterGivenNode(56,30);
+        LL.InsertNodeAfterGivenNode(56, 30);
 
-        //Use Case 6
-        LL.deleteLast();
+        // Use Case 9
+        LL.deleteNode(70);
         LL.displayLL();
 
     }
 }
 
-class Node{
+class Node {
     int data;
     Node next;
 
-    public Node(int data)
-    {
+    public Node(int data) {
         this.data = data;
         this.next = null;
     }
 }
 
-class LLImplementation
-{
+class LLImplementation {
     Node head = null;
 
-    //method to add node to LL
+    // method to add node to LL
     public void addNode(int data) {
         Node newnode = new Node(data);
 
@@ -51,25 +48,22 @@ class LLImplementation
     }
 
     // Method to display the linked list
-    public void displayLL()
-    {
+    public void displayLL() {
         Node temp = head;
 
-        while(temp != null)
-        {
+        while (temp != null) {
             System.out.print(temp.data + "->");
             temp = temp.next;
         }
     }
 
     // Method to insert a new node with data after a given node
-    public void InsertNodeAfterGivenNode(int prev_data,int data)
-    {
+    public void InsertNodeAfterGivenNode(int prev_data, int data) {
         Node newnode = new Node(data);
 
         Node temp = head;
 
-        while(temp != null) {
+        while (temp != null) {
             // when we find node with prev_data
             if (temp.data == prev_data) {
                 Node next = temp.next;
@@ -82,20 +76,17 @@ class LLImplementation
         }
     }
 
-    //delete head
-    public void deleteHead()
-    {
+    // delete head
+    public void deleteHead() {
         Node temp = head.next;
         head = temp;
     }
 
-    //Pop last node
-    public void deleteLast()
-    {
+    // Pop last node
+    public void deleteLast() {
         Node temp = head;
 
-        while(temp.next.next != null)
-        {
+        while (temp.next.next != null) {
             temp = temp.next;
         }
 
@@ -105,13 +96,11 @@ class LLImplementation
 
     // search node with given value
 
-    public Node search(int data)
-    {
+    public Node search(int data) {
         Node temp = head;
 
-        while(temp != null)
-        {
-            if(temp.data == data)
+        while (temp != null) {
+            if (temp.data == data)
                 return temp;
             temp = temp.next;
         }
@@ -119,9 +108,35 @@ class LLImplementation
         return null;
     }
 
+    // method to delete node from anywhere in the LL
+    public void deleteNode(int data) {
+        Node temp = head;
+
+        Node prev = null;
+
+        while (temp != null) {
+            if (temp.data == data) {
+                prev.next = temp.next;
+                break;
+            }
+
+            prev = temp;
+            temp = temp.next;
+        }
+    }
+
+    // calculate size of LL
+    public int size() {
+        int count = 0;
+        Node temp = head;
+
+        // Count the number of nodes in the linked list
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+
+        return count;
+    }
 
 }
-
-
-
-
