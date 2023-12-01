@@ -2,26 +2,31 @@ public class LinkedList {
 
     public static void main(String[] args) {
         LLImplementation LL = new LLImplementation();
-        LL.addNode(56);
-        LL.addNode(70);
 
-        // Use Case4
-        LL.InsertNodeAfterGivenNode(56, 30);
+        // Use case 10
+        LL.addNodeinSorted(30);
 
-        // Use Case 9
-        LL.deleteNode(70);
+        LL.addNodeinSorted(40);
+
+        LL.addNodeinSorted(25);
+
         LL.displayLL();
 
     }
 }
 
-class Node {
+class Node implements Comparable<Node> {
     int data;
     Node next;
 
     public Node(int data) {
         this.data = data;
         this.next = null;
+    }
+
+    @Override
+    public int compareTo(Node other) {
+        return this.data - other.data;
     }
 }
 
@@ -45,6 +50,39 @@ class LLImplementation {
             temp.next = newnode;
 
         }
+    }
+
+    // method to add node in sorted order
+    public void addNodeinSorted(int data) {
+        Node newnode = new Node(data);
+
+        // if we are adding first node
+        if (head == null) {
+            newnode.next = head;
+            head = newnode;
+            return;
+        }
+
+        // data of node is less than head
+        if (newnode.compareTo(head) < 0) {
+            newnode.next = head;
+            head = newnode;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            if (newnode.compareTo(temp) > 0) {
+                newnode.next = temp;
+                return;
+            }
+
+            temp = temp.next;
+        }
+        // adding node at tail
+        temp.next = newnode;
+
     }
 
     // Method to display the linked list
