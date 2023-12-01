@@ -65,6 +65,16 @@ class LLImplementation
             temp = temp.next;
         }
     }
+
+    //delete head
+    public void deleteHead()
+    {
+        Node temp = head->next;
+
+        head = temp;
+    }
+
+
 }
 
 public class LinkedList {
@@ -76,8 +86,10 @@ public class LinkedList {
         LL.addNode(70);
 
         // Use Case4
-        LL.InsertNodeAfterGivenNode(56,30);
+        LL.InsertNodeAfterGivenNode(56,30)
 
+        // Use Case 5
+        LL.deleteHead();
         LL.displayLL();
 
     }
