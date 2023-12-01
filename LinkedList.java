@@ -22,14 +22,12 @@ class LLImplementation
         // If we encounter first node
         if (head == null) {
             head = newnode;
+            head.next = null;
         } else {
-            Node temp = head;
 
-            while (temp.next != null) {
-                temp = temp.next;
-            }
-
-            temp.next = newnode;
+            // the newnode will become head everytime
+            newnode.next = head;
+            head = newnode;
 
         }
     }
@@ -41,7 +39,7 @@ class LLImplementation
 
         while(temp != null)
         {
-            System.out.println(temp.data);
+            System.out.print(temp.data + "->");
             temp = temp.next;
         }
     }
@@ -52,9 +50,9 @@ public class LinkedList {
     public static void main(String[] args)
     {
         LLImplementation LL = new LLImplementation();
-        LL.addNode(56);
-        LL.addNode(30);
         LL.addNode(70);
+        LL.addNode(30);
+        LL.addNode(56);
 
         //Display LL
         LL.displayLL();
