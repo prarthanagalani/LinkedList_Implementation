@@ -1,4 +1,20 @@
-package LinkedList_Implementation
+public class LinkedList {
+
+    public static void main(String[] args)
+    {
+        LLImplementation LL = new LLImplementation();
+        LL.addNode(56);
+        LL.addNode(70);
+
+        // Use Case4
+        LL.InsertNodeAfterGivenNode(56,30);
+
+        //Use Case 6
+        LL.deleteLast();
+        LL.displayLL();
+
+    }
+}
 
 class Node{
     int data;
@@ -87,23 +103,25 @@ class LLImplementation
 
     }
 
+    // search node with given value
 
-}
-
-public class LinkedList {
-
-    public static void main(String[] args)
+    public Node search(int data)
     {
-        LLImplementation LL = new LLImplementation();
-        LL.addNode(56);
-        LL.addNode(70);
+        Node temp = head;
 
-        // Use Case4
-        LL.InsertNodeAfterGivenNode(56,30);
+        while(temp != null)
+        {
+            if(temp.data == data)
+                return temp;
+            temp = temp.next;
+        }
 
-        //Use Case 6
-        LL.deleteLast();
-        LL.displayLL();
-
+        return null;
     }
+
+
 }
+
+
+
+
