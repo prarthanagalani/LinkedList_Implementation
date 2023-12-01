@@ -45,6 +45,26 @@ class LLImplementation
             temp = temp.next;
         }
     }
+
+    // Method to insert a new node with data after a given node
+    public void InsertNodeAfterGivenNode(int prev_data,int data)
+    {
+        Node newnode = new Node(data);
+
+        Node temp = head;
+
+        while(temp != null) {
+            // when we find node with prev_data
+            if (temp.data == prev_data) {
+                Node next = temp.next;
+                temp.next = newnode;
+                newnode.next = next;
+                break;
+            }
+
+            temp = temp.next;
+        }
+    }
 }
 
 public class LinkedList {
@@ -53,10 +73,11 @@ public class LinkedList {
     {
         LLImplementation LL = new LLImplementation();
         LL.addNode(56);
-        LL.addNode(30);
         LL.addNode(70);
 
-        //Display LL
+        // Use Case4
+        LL.InsertNodeAfterGivenNode(56,30);
+
         LL.displayLL();
 
     }
